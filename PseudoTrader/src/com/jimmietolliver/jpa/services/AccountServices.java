@@ -59,7 +59,6 @@ public class AccountServices extends AbstractSevices implements Serializable {
 		Query query = em.createNamedQuery("getAccountPassword");
 		query.setParameter("username", username);
 		List<String> account = query.getResultList();
-		System.out.println(account);
 				
 		return account.get(0);
 	}

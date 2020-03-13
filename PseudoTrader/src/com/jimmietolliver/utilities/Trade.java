@@ -139,6 +139,8 @@ public class Trade {
 
 			validTrade = -1;
 		}
+		
+		accountNum.cleanup();
 
 		return validTrade;
 	}
