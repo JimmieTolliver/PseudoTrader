@@ -33,6 +33,7 @@ public class AccountServices extends AbstractSevices implements Serializable {
 
 	/**
 	 * @param userName
+	 * @return String
 	 * Gets firstname by userName
 	 */
 	public String getFirstName(String userName) {
@@ -51,6 +52,7 @@ public class AccountServices extends AbstractSevices implements Serializable {
 	
 	/**
 	 * @param username
+	 * @return String
 	 * Gets password by username
 	 */
 	public String getAccountPassword(String username) {
@@ -64,6 +66,7 @@ public class AccountServices extends AbstractSevices implements Serializable {
 
 	/**
 	 * @param id
+	 * @return Account
 	 * Gets account by id
 	 */
 	public Account getAccountByNumber(Long id) {
@@ -72,6 +75,7 @@ public class AccountServices extends AbstractSevices implements Serializable {
 
 	/**
 	 * @param userName
+	 * @return Long
 	 * Gets account number by user name
 	 */
 	public Long getAccountNumberByUserName(String userName) {
@@ -82,6 +86,7 @@ public class AccountServices extends AbstractSevices implements Serializable {
 
 	/**
 	 * @param account
+	 * @return void
 	 * Updates account info in database
 	 */
 	public void updateAccount(Account account) {
@@ -91,7 +96,7 @@ public class AccountServices extends AbstractSevices implements Serializable {
 	}
 	
 	/**
-	 * 
+	 * @return List<String>
 	 * Returns all usernames
 	 */
 	public List<String> getAllUserNames(){

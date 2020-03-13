@@ -31,12 +31,12 @@ public class HoldingServices extends AbstractSevices implements Serializable {
 	public HoldingServices() {
 	}
 
-	public Holding getHoldingsById(Long id) {
-		this.holdingId = id;
-		return em.find(Holding.class, holdingId);
 
-	}
-
+	/**
+	 * @param Long id
+	 * @return List<Holding>
+	 * Gets holdings by account number
+	 */
 	public List<Holding> getHoldingsByAccountId(Long id) {
 		this.accountId = id;
 
@@ -47,20 +47,10 @@ public class HoldingServices extends AbstractSevices implements Serializable {
 		return holdings;
 	}
 
-	public List<Holding> findAllHoldings() {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("PseudoTrader");
-		EntityManager em = emf.createEntityManager();
-		Query query = em.createNamedQuery("allHoldings");
-
-		@SuppressWarnings("unchecked")
-		List<Holding> holdings = query.getResultList();
-		em.close();
-		emf.close();
-		return holdings;
-	}
 	
 	/**
 	 * @return void add new stock to stocks table
+	 * @param newHolding
 	 */
 	public void create(Holding newHolding) {
 		em.getTransaction().begin();
