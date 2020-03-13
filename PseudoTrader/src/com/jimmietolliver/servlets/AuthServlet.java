@@ -60,24 +60,16 @@ public class AuthServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		if (firstName == null) {
-			System.out.println("invalid username");
-		} else {
+		if (firstName != null) {
 			pword = account.getAccountPassword(username);
-			System.out.println(pword);
 		}
-
-		System.out.println(firstName);
 
 		if (!pword.equals(password) || firstName == null) {
 			String message = "Invalid username or password. Try again.";
-			System.out.println(message);
 			request.setAttribute("message", message);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/html/index.jsp");
 			rd.include(request, response);
 		} else {
-			System.out.println("Welcome " + firstName);
-
 			// Set session info
 			Long accountId = account.getAccountNumberByUserName(username);
 			HttpSession session = request.getSession();

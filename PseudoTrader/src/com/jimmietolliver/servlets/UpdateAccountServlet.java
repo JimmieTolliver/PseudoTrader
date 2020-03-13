@@ -55,7 +55,6 @@ public class UpdateAccountServlet extends HttpServlet {
 
 		if(!password1.equals(password2)) {
 			String message = "Passwords don't match, try again";
-			System.out.println(message);
 			request.setAttribute("message", message);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/html/updateaccount.jsp");
 			rd.include(request, response);
