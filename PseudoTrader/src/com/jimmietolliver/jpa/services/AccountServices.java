@@ -6,13 +6,11 @@
 package com.jimmietolliver.jpa.services;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Query;
 
 import com.jimmietolliver.jpa.entities.Account;
-import com.jimmietolliver.jpa.entities.Holding;
 
 /**
  * @author Jimmie Tolliver
@@ -33,6 +31,10 @@ public class AccountServices extends AbstractSevices implements Serializable {
 		super();
 	}
 
+	/**
+	 * @param userName
+	 * Gets firstname by userName
+	 */
 	public String getFirstName(String userName) {
 		Query query = em.createNamedQuery("GetFirstName");
 		query.setParameter("username", userName);
@@ -46,6 +48,11 @@ public class AccountServices extends AbstractSevices implements Serializable {
 		return firstName;
 	}
 	
+	
+	/**
+	 * @param username
+	 * Gets password by username
+	 */
 	public String getAccountPassword(String username) {
 		Query query = em.createNamedQuery("getAccountPassword");
 		query.setParameter("username", username);
@@ -55,51 +62,43 @@ public class AccountServices extends AbstractSevices implements Serializable {
 		return account.get(0);
 	}
 
-	public List<Account> getAccountHoldings(Long accountId) {
-		Query query = em.createNamedQuery("getAccountHoldings");
-		query.setParameter("id", accountId);
-		List<Account> account = query.getResultList();
-		return account;
-	}
-
-	public List<String> getTickersByAccountId(Long accountId) {
-		Query query = em.createNamedQuery("getTickersById");
-		query.setParameter("id", accountId);
-		List<Holding> holdings = query.getResultList();
-		List<String> tickers = new ArrayList<String>();
-		for (Holding h : holdings) {
-			tickers.add(h.getStock().getTicker());
-		}
-		return tickers;
-	}
-
+	/**
+	 * @param id
+	 * Gets account by id
+	 */
 	public Account getAccountByNumber(Long id) {
 		return em.find(Account.class, id);
 	}
 
+	/**
+	 * @param userName
+	 * Gets account number by user name
+	 */
 	public Long getAccountNumberByUserName(String userName) {
 		Query query = em.createNamedQuery("GetAccountNumber");
 		query.setParameter("username", userName);
 		return (Long) query.getSingleResult();
 	}
 
+	/**
+	 * @param account
+	 * Updates account info in database
+	 */
 	public void updateAccount(Account account) {
 		em.getTransaction().begin();
 		em.merge(account);
 		em.getTransaction().commit();
 	}
-
-	public List<Account> findAll() {
-//		Query query = em.createNamedQuery("findAll");
-//		List<Account> account = query.getResultList();
-//		return account;
-		return em.createNamedQuery("findAll").getResultList(); // TODO replace other namedquery methods like this
-	}
 	
+	/**
+	 * 
+	 * Returns all usernames
+	 */
 	public List<String> getAllUserNames(){
 		return em.createNamedQuery("getAllUserNames").getResultList();
 	}
 
+	
 	@Override
 	public String toString() {
 		return "AccountServices [accountId=" + accountId + ", firstName=" + firstName + ", lastName=" + lastName

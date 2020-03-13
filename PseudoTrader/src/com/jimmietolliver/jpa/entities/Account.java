@@ -19,12 +19,10 @@ import java.util.List;
  */
 @Entity
 @Table(name = "account")
-@NamedQueries({ @NamedQuery(name = "findAll", query = "select a from Account a"),
+@NamedQueries({ 
 		@NamedQuery(name = "getAllUserNames", query = "select a.username from Account a"),
 		@NamedQuery(name = "GetFirstName", query = "SELECT f FROM Account f WHERE :username = f.username"),
 		@NamedQuery(name= "GetAccountNumber", query = "SELECT f.id FROM Account f WHERE :username = f.username"),
-		@NamedQuery(name = "getAccountHoldings", query = "SELECT h FROM Holding h, Account a WHERE :id = a.id"),
-		@NamedQuery(name="getTickersById", query="SELECT t FROM Holding t WHERE :id = t.id"),
 		@NamedQuery(name="getAccountPassword", query = "SELECT p.password FROM Account p WHERE :username = p.username")
 })
 public class Account implements Serializable {
