@@ -63,6 +63,11 @@ public class TransactionServices extends AbstractSevices implements Serializable
 		this.setDate(date);
 	}
 	
+	/**
+	 * @param newTransaction
+	 * @return void
+	 * Creates entry in transactions DB table
+	 */
 	public void create(Transaction newTransaction) {
 		em.getTransaction().begin();
 		em.persist(newTransaction);
