@@ -88,7 +88,6 @@ public class Trade {
 				newStock.setClosePrice(42.56); // TODO remove from DB - not needed
 				stocks.create(newStock);
 			} else {
-				System.out.println("Stock Already in Stocks Table");
 				newStock.setName(stocks.getStockByTicker(ticker).getName());
 				newStock.setClosePrice(stocks.getStockByTicker(ticker).getClosePrice());
 			}
@@ -105,7 +104,6 @@ public class Trade {
 			for (Holding i : h) {
 				tkrs.add(i.getStock().getTicker());
 			}
-			System.out.println("Tickers: " + tkrs);
 
 			if (tkrs.contains(ticker)) {
 				for (Holding i : h) {
@@ -116,23 +114,9 @@ public class Trade {
 
 			} else {
 				newHolding.setNumShares(numShares);
-
-				System.out.println(newHolding.getStock());
-
-				for (Holding holding : accNum.getHoldings()) {
-					System.out.println(holding.getStock().getTicker());
-				}
-				System.out.println(accNum);
-				System.out.println(newHolding);
 				accNum.addHolding(newHolding);
-				System.out.println(accNum);
 			}
 			accountNum.updateAccount(accNum);
-			System.out.println(accNum.getHoldings().toString());
-			for (Holding holding : accNum.getHoldings()) {
-				System.out.println(holding.getId() + " " + holding.getAccount().getFirstName() + " "
-						+ holding.getStock().getId() + " " + holding.getNumShares());
-			}
 
 			stocks.cleanup();
 
@@ -144,8 +128,6 @@ public class Trade {
 			newTransaction.setTradeShares(numShares);
 			newTransaction.setBuy(true);
 
-			System.out.println("hi");
-			System.out.println(newTransaction.getStock());
 			accNum.addTransaction(newTransaction);
 //				END TRANSACTION TABLE CODE
 
@@ -155,7 +137,6 @@ public class Trade {
 
 		} else {
 
-			System.out.println("Sorry not enough cash for this transaction");
 			validTrade = -1;
 		}
 
@@ -173,7 +154,6 @@ public class Trade {
 
 		// GET CURRENT NUMBER OF SHARES
 		List<Holding> holdings = account.getHoldings();
-		System.out.println(accountId);
 		Long holdShares = 0L;
 		Holding newHolding = null;
 		int validTrade = 0;
@@ -184,7 +164,6 @@ public class Trade {
 				if (holdShares >= numShares) {
 					holding.setNumShares(holdShares - numShares); // SET SHARES TO NEW VALUE
 					newHolding = holding;
-					System.out.println("New num shares " + holding.getNumShares());
 
 					// TRANSACTION TABLE CODE
 					Transaction newTransaction = new Transaction();
@@ -199,8 +178,6 @@ public class Trade {
 					// UPDATE CASH
 					account.getCash().setCurrCashVal(currCash + numShares * stockPrice);
 				} else {
-					System.out.println("Sorry you don't own enough shares of " + holding.getStock().getName() + "("
-							+ holding.getStock().getTicker() + ")");
 					validTrade = -1;
 				}
 			}
