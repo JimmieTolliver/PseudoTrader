@@ -56,15 +56,6 @@ public class TransactionServlet extends HttpServlet {
 		AccountServices accountService = new AccountServices();
 		Account account = accountService.getAccountByNumber(accountId);
 		List<Transaction> transactions = account.getTransactions();
-		for (Transaction transaction : transactions) {
-			System.out.println("Ticker: " + transaction.getStock().getTicker());
-			System.out.println("Name: " + transaction.getStock().getName());
-			System.out.println("Date: " + transaction.getDate());
-			System.out.println("Shares: " + transaction.getTradeShares());
-			System.out.println("Trade Type: " + transaction.getBuy());
-			System.out.println("Trade Price: " + transaction.getTradePrice());
-			System.out.println("Amount: " + transaction.getTradeShares() * transaction.getTradePrice());
-		}
 
 		request.setAttribute("transactions", transactions);
 
