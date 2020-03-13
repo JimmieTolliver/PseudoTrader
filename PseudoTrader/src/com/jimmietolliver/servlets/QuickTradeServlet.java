@@ -30,7 +30,8 @@ public class QuickTradeServlet extends HttpServlet {
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public QuickTradeServlet() {
-
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -56,9 +57,13 @@ public class QuickTradeServlet extends HttpServlet {
 		Account accNum = accountNum.getAccountByNumber(accountId);
 
 		Long numShares = Long.parseLong(request.getParameter("qty"));
-	
+		System.out.println(numShares);
+
 		String trade = request.getParameter("trade");
 		String trades[] = trade.split("_");
+		for (String s : trades) {
+			System.out.println(s);
+		}
 		String ticker = trades[0];
 		Double stockPrice = Double.parseDouble(trades[1]);
 		String tradeType = trades[2];
@@ -70,6 +75,8 @@ public class QuickTradeServlet extends HttpServlet {
 		} else {
 			validTrade = t.sellStock();
 		}
+
+		System.out.println("Done");
 
 		request.setAttribute("ticker", ticker);
 		request.setAttribute("tradeType", tradeType);

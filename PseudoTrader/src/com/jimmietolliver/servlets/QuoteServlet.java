@@ -66,7 +66,6 @@ public class QuoteServlet extends HttpServlet {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		
 		String marketChange = "N/A";
 		try {
 			marketChange = stockData.getBody().getObject().getJSONObject("price").getJSONObject("regularMarketChange")

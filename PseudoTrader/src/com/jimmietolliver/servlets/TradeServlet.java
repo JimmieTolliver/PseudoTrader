@@ -47,6 +47,7 @@ public class TradeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String ticker = request.getParameter("trade");
+		System.out.println(ticker);
 		request.setAttribute("ticker", ticker.toUpperCase());
 
 		StockQuote quote = new StockQuote(ticker);

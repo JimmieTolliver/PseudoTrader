@@ -64,6 +64,7 @@ public class PortfolioServlet extends HttpServlet {
 		Set<Holding> holdings = new HashSet<Holding>();
 		List<Holding> holdingsList = account.getHoldings();
 		for (Holding holding : holdingsList) {
+			System.out.println(holding.getStock().getTicker());
 			if (holding.getNumShares() > 0) {
 				holdings.add(holding);
 			}

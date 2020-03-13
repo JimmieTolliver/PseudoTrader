@@ -25,7 +25,6 @@ public class StockQuote {
 	}
 	
 	public double getQuote() throws UnirestException {
-		//Gets API Key
 		ApiKey apiKey = new ApiKey();
 		String key = apiKey.getKey();
 		
@@ -38,7 +37,6 @@ public class StockQuote {
 	}
 	
 	public String getName() throws UnirestException {
-		//Gets API Key
 		ApiKey apiKey = new ApiKey();
 		String key = apiKey.getKey();
 		
@@ -50,7 +48,6 @@ public class StockQuote {
 	}
 	
 	public HttpResponse<JsonNode> getFinancialData() throws UnirestException{
-		//Gets API Key
 		ApiKey apiKey = new ApiKey();
 		String key = apiKey.getKey();
 

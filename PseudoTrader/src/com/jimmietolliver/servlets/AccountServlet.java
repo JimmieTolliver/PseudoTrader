@@ -68,6 +68,7 @@ public class AccountServlet extends HttpServlet {
 		List<String> userNames = accountService.getAllUserNames();
 		if (userNames.contains(username)) {
 			String message = "Sorry username already in use. Try again.";
+			System.out.println(message);
 			request.setAttribute("message", message);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/html/newuser.jsp");
 			rd.include(request, response);
@@ -76,6 +77,7 @@ public class AccountServlet extends HttpServlet {
 		// Make sure passwords match
 		else if (!password1.equals(password2)) {
 			String message = "Passwords don't match, try again";
+			System.out.println(message);
 			request.setAttribute("message", message);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/html/newuser.jsp");
 			rd.include(request, response);

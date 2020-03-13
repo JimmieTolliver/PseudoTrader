@@ -90,7 +90,6 @@ public class CashServices extends AbstractSevices implements Serializable{
 	public void setCurrCashVal(double currCashVal) {
 		this.currCashVal = currCashVal;
 	}
-	
 	@Override
 	public String toString() {
 		return "CashServices [id=" + id + ", accountId=" + accountId + ", intitialCashVal=" + intitialCashVal
