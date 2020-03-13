@@ -33,6 +33,7 @@ public class CashServices extends AbstractSevices implements Serializable{
 	
 	/**
 	 * @param cash
+	 * @return void
 	 * Updates cash balance in DB
 	 */
 	public void updateCash(Cash cash) {

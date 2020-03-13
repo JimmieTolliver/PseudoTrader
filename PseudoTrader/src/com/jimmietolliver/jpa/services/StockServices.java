@@ -44,6 +44,11 @@ public class StockServices extends AbstractSevices implements Serializable {
 		this.closePrice = closePrice;
 	}
 
+	/**
+	 * @param ticker
+	 * @return boolean
+	 * Checks to see if ticker already in stocks DB table
+	 */
 	public boolean contains(String ticker) {
 		Query query = em.createNamedQuery("getAllTickers");
 		@SuppressWarnings("unchecked")
@@ -55,6 +60,7 @@ public class StockServices extends AbstractSevices implements Serializable {
 	}
 
 	/**
+	 * @param newStock
 	 * @return void add new stock to stocks table
 	 */
 	public void create(Stock newStock) {
@@ -64,6 +70,7 @@ public class StockServices extends AbstractSevices implements Serializable {
 	}
 
 	/**
+	 * @param String ticker
 	 * @return Stock by ticker
 	 */
 	public Stock getStockByTicker(String ticker) {
@@ -73,6 +80,7 @@ public class StockServices extends AbstractSevices implements Serializable {
 	}
 
 	/**
+	 * @param Long stockId
 	 * @return Shares by id
 	 */
 	public Long getNumSharesByStockId(Long stockId) {
