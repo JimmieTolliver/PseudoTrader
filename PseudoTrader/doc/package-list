@@ -2,4 +2,5 @@ com.jimmietolliver.drivers
 com.jimmietolliver.jpa.entities
 com.jimmietolliver.jpa.services
 com.jimmietolliver.servlets
+com.jimmietolliver.test
 com.jimmietolliver.utilities
