@@ -27,7 +27,6 @@
 							(${marketChangePercent })</span></strong>
 				</div>
 				<table class="bg-color2">
-					<!-- Replace with div's for bootstrap? -->
 					<tr class="stripes">
 						<td>Previous Close: $${prevClose }</td>
 						<td>Market Cap: ${marketCap }</td>
@@ -59,7 +58,7 @@
 					<button type="submit" name="trade" value="${ticker}">Buy</button>
 				</form>
 
-				<form action="./html/research.jsp">
+				<form class="userinfo" action="./html/research.jsp">
 					<input type="submit" value="New Quote">
 				</form>
 			</div>

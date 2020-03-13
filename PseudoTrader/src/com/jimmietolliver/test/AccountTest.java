@@ -5,12 +5,9 @@ package com.jimmietolliver.test;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.List;
-
 import org.junit.Test;
 
 import com.jimmietolliver.jpa.entities.Account;
-import com.jimmietolliver.jpa.entities.Holding;
 import com.jimmietolliver.jpa.services.AccountServices;
 
 /**

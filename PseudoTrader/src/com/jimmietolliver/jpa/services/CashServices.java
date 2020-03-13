@@ -30,15 +30,11 @@ public class CashServices extends AbstractSevices implements Serializable{
 	public CashServices() {
 	}
 	
-	public List<Cash> getCashByAccountId(Long accountId){
-		Query query = em.createNamedQuery("getCash");
-		query.setParameter("id", accountId);
-
-		@SuppressWarnings("unchecked")
-		List<Cash> cash = query.getResultList();
-		return cash;
-	}
 	
+	/**
+	 * @param cash
+	 * Updates cash balance in DB
+	 */
 	public void updateCash(Cash cash) {
 		em.getTransaction().begin();
 		em.merge(cash);
